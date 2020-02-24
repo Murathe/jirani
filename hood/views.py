@@ -54,7 +54,7 @@ def neighborhood(request, id):
     try:
         neighborhood = Neighborhood.objects.get(neighborhood_id=id)
     except ObjectDoesNotExist:
-        return redirect(index_html, current_user.id)
+        return redirect(home, current_user.id)
 
     return render(request, 'index.html', {"user":user, "name":name, "neighborhood":neighborhood, "current_neighborhood":current_neighborhood})
 
