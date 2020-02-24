@@ -83,7 +83,7 @@ def business(request, id):
     try:
         neighborhood = Neighborhood.objects.get(id=id)
     except ObjectDoesNotExist:
-        return redirect(index_html, current_user.id)
+        return redirect(home)
 
     businesses = Business.objects.filter(business_neighborhood_id=id)
     posts = Post.objects.filter(location_id=id)
