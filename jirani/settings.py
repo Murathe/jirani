@@ -78,7 +78,9 @@ WSGI_APPLICATION = 'jirani.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresl',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'jirani',
+        'USER': 'moringa',
+        'PASSWORD': 'izoh1234',
     }
 }
 
