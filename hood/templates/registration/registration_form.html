@@ -1,0 +1,66 @@
+{%extends "registration/base.html"%}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+
+    <body>
+        <div class="row">
+            <!-- Empty div -->
+            <div class="col-md-3"></div>
+            <div class="col-md-6 ">
+                <div style="font-size: 18px;" class="error ">
+                    {% if form.errors %}
+                    <p> Some Information Might be Incorrect </p>
+                    {% endif %}
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="panel panel-default shadow p-5 mb-5 rounded" style="background-color:#009FB7">
+                    <br>
+
+                    <div class="panel-heading ">
+                      <div class="text-center">
+                      <img src="https://dailycliparts.com/wp-content/uploads/2019/01/2-Neighbour-Houses-Black-Icon-Image-893x1024.png" style="width:70px;height:70px;" alt="Neighbour-Houses-Black-Icon">
+                      </div>
+                        <p style="font-size: 40px;" class="text-center">Register
+                        </p>
+
+                        <hr>
+                        <p class="text-center"> Are you a member? <a style="text-decoration: none; color:#FED766;"
+                                href="/accounts/login">Login
+                                </a>
+                        </p>
+                    </div>
+                    <hr>
+                    <br>
+
+                    <div class="panel-body">
+
+                        <form action="/accounts/register/" method="post">
+                            {% csrf_token %}
+                            {% bootstrap_form form %}
+                            <br>
+                            <br>
+                            <div class="form-group change">
+                                <input type="submit" class="btn btn-primary btn-lg btn-block"
+                                    style="background-color: #3B413C; " value="CREATE ACCOUNT">
+                            </div>
+
+                            <input type="hidden" name="next" value="{{next}}">
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <!-- empty div -->
+            <div class="col-md-3"></div>
+        </div>
+    </body>
+</div>
+
+{% endblock %}
