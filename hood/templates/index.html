@@ -1,39 +1,30 @@
 {%extends "base.html"%}
 {% load bootstrap3 %}
-
 {% block content %}
-<div class="text-center" style="padding-top:70px; font-family: 'Cinzel Decorative', cursive;">
-  <h1>Welcome to Neighborhood Community App.<br/> Know What's Going On Around You!</h1>
-</div>
-<hr>
-<div class="container">
-
-    <body>
-        <div class="row">
-            {% for hood in hoods %}
-            <div class="col-sm-4 col-md-4 col-sm-4">
-                <br>
-                <br>
-                <div class="card  shadow-lg p-1 mb-5 rounded" style="width: 22rem; background-color:#F4F4F8;">
-                    <img class="card-img-top"
-                        src='https://thumbs.dreamstime.com/b/set-different-people-vector-illustration-group-people-standing-together-set-different-people-148194326.jpg'
-                        alt="Card image cap">
+    <div class="text-center" style="padding-top:70px; font-family: 'Trade Winds';">
+    <h1>Karibu Jiranihood.<br/>Join channel na ujue mtaa yako</h1>
+    </div>
+    <hr>
+    <div class="container">
+        <body>
+            <div class="row">
+                {% for hood in hoods %}
+                <div class="col-sm-4 col-md-4 col-sm-4">
                     <br>
-                    <div class="card-body">
-                        <p style="color:Black;" class="card-text text-center"><b>{{hood.name}}</b></p>
-                        <p style="color:#007E7F; text-decoration: none; font-family: 'Gelasio', serif;" class="card-text text-center"> <a
-                                style="color:#007E7F; text-decoration: none;"
-                                href="{% url 'business' hood.id %}"><b>Click Here to Join
-                                    {{hood.name}} Community</b>
-                        </p></a>
+                    <br>
+                    <div class="card  shadow-lg p-1 mb-5 rounded" style="width: 50rem;">
+                        <img class="card-img-top" src='https://as1.ftcdn.net/jpg/00/98/20/80/500_F_98208053_zY8inDEg4Ojqn5ACRyIcaQ2ymwqLhZlW.jpg' alt="Jirani image">
+                        <br>
+                        <div class="card-body">
+                            <p style="" class="card-text text-center"><b>{{hood.name}}</b></p>
+                            <p style="" class="card-text text-center">
+                                <a href="{% url 'business' hood.id %}"><b>Join a hood{{hood.name}} Community</b></a>
+                            </p>
+                        </div>
                     </div>
                 </div>
-
+                {% endfor %}
             </div>
-
-            {% endfor %}
-        </div>
-    </body>
-
-</div>
+        </body>
+    </div>
 {% endblock %}
