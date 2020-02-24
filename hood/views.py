@@ -4,8 +4,6 @@ from .models import Neighborhood,Profile,Post,Business
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from .forms import ProfileForm,NeighborhoodForm,BusinessForm,PostForm
-
-
 # Create your views here.
 
 @login_required(login_url='/accounts/login')
@@ -15,7 +13,6 @@ def home(request):
     profile = Profile.objects.all()
     print(profile)
     return render(request, 'index.html',{'hoods':hoods})
-
 
 @login_required(login_url='/accounts/login')
 def profile(request, id):
@@ -29,7 +26,6 @@ def profile(request, id):
     except ObjectDoesNotExist:
         return redirect(update_profile, current_user.id)
     else:
-
         return render(request, 'profile.html',{"user":user, "profile":profile, 'hoods':hoods, "posts":posts})
 
 
@@ -50,7 +46,6 @@ def update_profile(request,id):
         form = ProfileForm()
     return render(request, 'update_profile.html', {"user": user, "form": form})
 
-
 @login_required(login_url='/accounts/login')
 def neighborhood(request, id):
     user = User.objects.get(id=id)
@@ -62,9 +57,6 @@ def neighborhood(request, id):
         return redirect(index_html, current_user.id)
 
     return render(request, 'index.html', {"user":user, "name":name, "neighborhood":neighborhood, "current_neighborhood":current_neighborhood})
-
-
-
 
 @login_required(login_url='/accounts/login')
 def join(request, id):
@@ -83,9 +75,7 @@ def join(request, id):
 
     else:
         form = NeighborhoodForm()
-
     return render(request, 'neighborhood.html', {"user": current_user, "form": form})
-
 
 @login_required(login_url='/accounts/login')
 def business(request, id):
@@ -101,7 +91,6 @@ def business(request, id):
     print(posts)
     return render(request, 'business.html',{'businesses':businesses,'posts':posts,'hoods':hoods })
 
-
 @login_required(login_url='/accounts/login')
 def add_business(request, id):
     current_user = request.user
@@ -113,7 +102,6 @@ def add_business(request, id):
     print(current_neighborhood)
     current_user = request.user
     form = BusinessForm()
-
 
     if request.method == 'POST':
         form = BusinessForm(request.POST, request.FILES)
@@ -132,8 +120,6 @@ def add_business(request, id):
         form = BusinessForm()
 
     return render(request, 'add_business.html', {"current_neighborhood": current_neighborhood, "form": form})
-
-
 
 @login_required(login_url='/accounts/login')
 def post(request, id):
@@ -159,13 +145,10 @@ def post(request, id):
             post.save()
 
         return redirect('business', id)
-
     else:
         form = PostForm()
 
     return render(request, 'post.html', {"current_neighborhood": current_neighborhood, "form": form})
-
-
 
 @login_required(login_url='/login/')
 def search_results(request):
@@ -176,17 +159,14 @@ def search_results(request):
         message = f"{search_term}"
 
         return render(request, 'search.html',{"message":message,"users": searched_businesses,"profile":profile})
-
     else:
         message = "You haven't searched for any business"
         return render(request, 'search.html',{"message":message})
-
 
 @login_required(login_url='/accounts/login/')
 def leave(request):
     current_user = request.user
     return redirect('home')
-
 
 def signout(request):
     logout(request)
