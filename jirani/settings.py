@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'jirani.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresl',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'jirani',
         'USER': 'moringa',
         'PASSWORD': 'izoh1234',
