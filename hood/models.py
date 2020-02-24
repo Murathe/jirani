@@ -73,7 +73,7 @@ class Business(models.Model):
         return fetched_object
 
 
-    def search_by_business(cls,search_term):
+    def search_by_business(self, cls,search_term):
         search_result = cls.objects.filter(business_name__icontains=search_term)
         return search_result
 
