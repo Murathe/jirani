@@ -4,3 +4,4 @@ from .models import Neighborhood, Profile, Post, Business
 
 admin.site.register(Neighborhood)
 admin.site.register(Profile)
+admin.site.register(Post)
