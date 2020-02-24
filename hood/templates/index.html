@@ -1,0 +1,39 @@
+{%extends "base.html"%}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="text-center" style="padding-top:70px; font-family: 'Cinzel Decorative', cursive;">
+  <h1>Welcome to Neighborhood Community App.<br/> Know What's Going On Around You!</h1>
+</div>
+<hr>
+<div class="container">
+
+    <body>
+        <div class="row">
+            {% for hood in hoods %}
+            <div class="col-sm-4 col-md-4 col-sm-4">
+                <br>
+                <br>
+                <div class="card  shadow-lg p-1 mb-5 rounded" style="width: 22rem; background-color:#F4F4F8;">
+                    <img class="card-img-top"
+                        src='https://thumbs.dreamstime.com/b/set-different-people-vector-illustration-group-people-standing-together-set-different-people-148194326.jpg'
+                        alt="Card image cap">
+                    <br>
+                    <div class="card-body">
+                        <p style="color:Black;" class="card-text text-center"><b>{{hood.name}}</b></p>
+                        <p style="color:#007E7F; text-decoration: none; font-family: 'Gelasio', serif;" class="card-text text-center"> <a
+                                style="color:#007E7F; text-decoration: none;"
+                                href="{% url 'business' hood.id %}"><b>Click Here to Join
+                                    {{hood.name}} Community</b>
+                        </p></a>
+                    </div>
+                </div>
+
+            </div>
+
+            {% endfor %}
+        </div>
+    </body>
+
+</div>
+{% endblock %}
