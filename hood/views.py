@@ -119,7 +119,7 @@ def add_business(request, id):
     else:
         form = BusinessForm()
 
-    return render(request, 'add_business.html', {"current_neighborhood": current_neighborhood, "form": form})
+    return render(request, 'add_bus.html', {"current_neighborhood": current_neighborhood, "form": form})
 
 @login_required(login_url='/accounts/login')
 def post(request, id):
