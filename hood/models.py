@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 
 class Neighborhood(models.Model):
     name = models.CharField(max_length=100)
+    jirani_pic = models.ImageField(upload_to = 'images/',default='images/christine.jpg')
     location = models.CharField(max_length=100, null=True)
     posted_by =  models.CharField(max_length=100, null=True)
     count = models.CharField(max_length=100)
@@ -52,7 +53,7 @@ class Business(models.Model):
     business_user = models.ForeignKey(User,on_delete=models.CASCADE)
     business_neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null=True)
     business_email = models.EmailField(max_length=100, unique= True)
-
+    business_pic = models.ImageField(upload_to = 'images/',default='images/christine.jpg')
 
     def create_business(self):
         self.save()
@@ -79,7 +80,7 @@ class Business(models.Model):
 
 
 class Profile(models.Model):
-    profile_pic = models.ImageField(upload_to = 'images/',default='images/christine.jpg')
+    profile_pic = models.ImageField(upload_to = 'images/',default='images/agie.jpg')
     bio = models.TextField()
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE, null=True, related_name='population')
