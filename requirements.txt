@@ -8,6 +8,7 @@ django-registration==2.4.1
 django-tinymce==2.8.0
 Pillow==2.2.1
 psycopg2==2.8.4
+python-decouple==3.3
 pytz==2019.3
 sqlparse==0.3.0
 whitenoise==5.0.1
